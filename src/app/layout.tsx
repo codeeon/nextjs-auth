@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '@/styles/globals.css';
 import { Inter as FontSans } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
+import { ThemeProvider } from '@/components/theme-provider';
+import { ModeToggle } from '@/components/mode-toggle';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -22,7 +24,17 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
-        {children}
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className='absolute right-6 top-6 cursor-pointer'>
+            <ModeToggle />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 
 const LogIn = () => {
   return (
-    <div>
+    <div className='min-h-screen flex items-center justify-center'>
       <LogInForm />
     </div>
   );
