@@ -31,7 +31,7 @@ import { logInSchema } from '@/validators/auth';
 
 type LogInData = { email: string; password: string };
 
-const LogInForm: React.JSX.Element = () => {
+const LogInForm = () => {
   const [loginError, setLoginError] = useState('');
 
   const form = useForm<LogInData>({
@@ -71,13 +71,8 @@ const LogInForm: React.JSX.Element = () => {
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input type={'email'} placeholder='abc@defgh.com' {...field} />
+                            <Input placeholder='abc@defgh.com' {...field} />
                           </FormControl>
-                          {/* {errors.email && (
-                              <FormDescription>
-                                <span className='text-red-500'>이메일을 입력해주세요.</span>
-                              </FormDescription>
-                            )} */}
                           <FormMessage />
                         </FormItem>
                       )}
@@ -93,11 +88,6 @@ const LogInForm: React.JSX.Element = () => {
                           <FormControl>
                             <Input type={'password'} placeholder='********' {...field} />
                           </FormControl>
-                          {/* {errors.password && (
-                              <FormDescription>
-                                <span className='text-red-500'>비밀번호를 입력해주세요.</span>
-                              </FormDescription>
-                            )} */}
                           <FormMessage />
                         </FormItem>
                       )}
