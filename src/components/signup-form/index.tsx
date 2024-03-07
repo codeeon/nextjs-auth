@@ -140,7 +140,7 @@ export const SignUpForm = () => {
                   </div>
                 </CardContent>
                 <CardFooter className='justify-center my-4'>
-                  <Button size='lg' type='submit'>
+                  <Button size='lg' type='submit' className='font-semibold'>
                     가입하기
                   </Button>
                 </CardFooter>
