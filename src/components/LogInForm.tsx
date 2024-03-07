@@ -11,7 +11,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,19 +19,20 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { logInSchema } from '@/validators/auth';
+import { useToast } from '@/components/ui/use-toast';
 
 type LogInData = { email: string; password: string };
 
-const LogInForm = () => {
-  const [loginError, setLoginError] = useState('');
+export const LogInForm = () => {
+  const { toast } = useToast();
+
+  // const [loginError, setLoginError] = useState('');
 
   const form = useForm<LogInData>({
     resolver: zodResolver(logInSchema),
@@ -44,10 +44,15 @@ const LogInForm = () => {
       const validatedData = logInSchema.parse(data);
       console.log(validatedData);
       // 로그인 로직 추가 예정
-      setLoginError('');
+
+      // setLoginError('');
     } catch (err) {
       console.error('로그인 실패:', err);
-      setLoginError('로그인에 실패했습니다. 다시 시도해주세요.');
+      toast({
+        variant: 'destructive',
+        title: '‼️ 로그인에 실패하였습니다.',
+        description: '이메일과 비밀번호를 확인해주세요.',
+      });
     }
   };
 
@@ -96,11 +101,11 @@ const LogInForm = () => {
                 </CardContent>
                 <CardFooter>
                   <Button type='submit'>Log In</Button>
-                  {loginError && (
+                  {/* {loginError && (
                     <FormDescription>
                       <p className='text-red-500 ml-4'>{loginError}</p>
                     </FormDescription>
-                  )}
+                  )} */}
                 </CardFooter>
               </form>
             </Form>
@@ -111,5 +116,3 @@ const LogInForm = () => {
     </div>
   );
 };
-
-export default LogInForm;

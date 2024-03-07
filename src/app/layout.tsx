@@ -5,6 +5,7 @@ import { Inter as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ModeToggle } from '@/components/mode-toggle';
+import { Toaster } from '@/components/ui/toaster';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -34,6 +35,7 @@ export default function RootLayout({
             <ModeToggle />
           </div>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
