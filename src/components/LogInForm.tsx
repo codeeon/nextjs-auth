@@ -32,8 +32,6 @@ type LogInData = { email: string; password: string };
 export const LogInForm = () => {
   const { toast } = useToast();
 
-  // const [loginError, setLoginError] = useState('');
-
   const form = useForm<LogInData>({
     resolver: zodResolver(logInSchema),
     defaultValues: { email: '', password: '' },
@@ -44,8 +42,6 @@ export const LogInForm = () => {
       const validatedData = logInSchema.parse(data);
       console.log(validatedData);
       // 로그인 로직 추가 예정
-
-      // setLoginError('');
     } catch (err) {
       console.error('로그인 실패:', err);
       toast({
@@ -61,8 +57,8 @@ export const LogInForm = () => {
       <Tabs defaultValue='account' className='w-[400px]'>
         <TabsContent value='account'>
           <Card>
-            <CardHeader>
-              <CardTitle>LOG IN</CardTitle>
+            <CardHeader className='items-center justify-center gap-2 mt-4'>
+              <CardTitle>로그인</CardTitle>
               <CardDescription>Welcome to the Next.js world</CardDescription>
             </CardHeader>
             <Form {...form}>
@@ -74,7 +70,7 @@ export const LogInForm = () => {
                       name='email'
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>이메일</FormLabel>
                           <FormControl>
                             <Input placeholder='abc@defgh.com' {...field} />
                           </FormControl>
@@ -89,7 +85,7 @@ export const LogInForm = () => {
                       name='password'
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Password</FormLabel>
+                          <FormLabel>비밀번호</FormLabel>
                           <FormControl>
                             <Input type={'password'} placeholder='********' {...field} />
                           </FormControl>
@@ -99,13 +95,10 @@ export const LogInForm = () => {
                     />
                   </div>
                 </CardContent>
-                <CardFooter>
-                  <Button type='submit'>Log In</Button>
-                  {/* {loginError && (
-                    <FormDescription>
-                      <p className='text-red-500 ml-4'>{loginError}</p>
-                    </FormDescription>
-                  )} */}
+                <CardFooter className='items-center justify-center my-4'>
+                  <Button type='submit' size='lg' className='font-semibold'>
+                    로그인
+                  </Button>
                 </CardFooter>
               </form>
             </Form>
