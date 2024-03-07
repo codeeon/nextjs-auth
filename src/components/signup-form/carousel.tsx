@@ -11,7 +11,7 @@ import {
 
 import Image from 'next/image';
 
-const RegisterCarousel = () => {
+const SignUpCarousel = () => {
   const images = ['/image/code.jpg', '/image/coffee.jpg', '/image/desk.jpg'];
 
   return (
@@ -40,4 +40,4 @@ const RegisterCarousel = () => {
   );
 };
 
-export default RegisterCarousel;
+export default SignUpCarousel;

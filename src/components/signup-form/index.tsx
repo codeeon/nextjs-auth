@@ -26,7 +26,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema } from '@/validators/auth';
 import { useToast } from '@/components/ui/use-toast';
-import RegisterCarousel from './RegisterCarousel';
+import RegisterCarousel from './carousel';
 
 type RegisterData = {
   email: string;
@@ -35,7 +35,7 @@ type RegisterData = {
   confirmPassword: string;
 };
 
-export const RegisterForm = () => {
+export const SignUpForm = () => {
   const { toast } = useToast();
 
   const form = useForm<RegisterData>({
